@@ -7,10 +7,18 @@ import './Countries.css';
 const Countries = ({ query }) => {
   const [countries, setCountries] = useState([]);
 
+  let count = 0;
+
+  const getCountryNumber = () => {
+    count += 1;
+
+    return count;
+  };
+
   useEffect(() => {
     request('summary', { method: 'GET' })
       .then((response) => setCountries(response.Countries));
-  }, [query]);
+  }, []);
 
   const filteredCountries = () => {
     if (query === '') {
@@ -18,19 +26,28 @@ const Countries = ({ query }) => {
     }
 
     return countries.filter(
-      ({ Country }) => Country.toLowerCase().includes(query.toLowerCase()),
+      ({ Country }) => Country
+        .toLowerCase()
+        .includes(query.toLowerCase()),
     );
   };
 
   return (
     <ul className="countries-list">
-      {filteredCountries().map((country) => (
+      <li className="countries-list-item">
+        <span className="countries-number">№</span>
+        <span className="countries-info">Country</span>
+        <span className="countries-info">Total Confirmed</span>
+      </li>
+
+      {filteredCountries().map(({ ID, Country, TotalConfirmed }) => (
         <li
-          key={country.ID}
+          key={ID}
           className="countries-list-item"
         >
-          <span>{country.Country}</span>
-          <span>{country.TotalConfirmed}</span>
+          <span className="countries-number">{getCountryNumber()}</span>
+          <span className="countries-info">{Country}</span>
+          <span className="countries-info">{TotalConfirmed}</span>
         </li>
       ))}
     </ul>

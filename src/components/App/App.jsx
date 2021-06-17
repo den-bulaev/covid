@@ -13,7 +13,7 @@ function App() {
       <header className="header">
         <img src={logo} alt="logo" />
 
-        <h1>STATISTIC</h1>
+        <h1 className="header-text">STATISTIC</h1>
 
         <input
           type="search"

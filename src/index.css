@@ -1,5 +1,13 @@
 body {
   margin: 40px 60px;
   font-family: Roboto, sans-serif;
-  background-color: green;
+  font-size: 24px;
+  line-height: 28.13px;
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
