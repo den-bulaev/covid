@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import Countries from '../Counties/Countries';
+import Countries from '../Countries/Countries';
 import logo from './logo.png';
 
 import './App.css';
 
 function App() {
+  const [query, setQurey] = useState('');
+
   return (
     <>
       <header className="header">
@@ -17,10 +19,12 @@ function App() {
           type="search"
           placeholder="Search..."
           className="search-field"
+          value={query}
+          onChange={(event) => setQurey(event.target.value)}
         />
       </header>
 
-      <Countries />
+      <Countries query={query} />
     </>
   );
 }
