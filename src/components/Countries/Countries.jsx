@@ -36,8 +36,10 @@ const Countries = ({ query }) => {
     <ul className="countries-list">
       <li className="countries-list-item">
         <span className="countries-number">№</span>
-        <span className="countries-info">Country</span>
-        <span className="countries-info">Total Confirmed</span>
+        <div className="container">Country</div>
+        <div className="container">
+          <span className="countries-list-info">Total Confirmed</span>
+        </div>
       </li>
 
       {filteredCountries().map(({ ID, Country, TotalConfirmed }) => (
@@ -45,9 +47,11 @@ const Countries = ({ query }) => {
           key={ID}
           className="countries-list-item"
         >
-          <span className="countries-number">{getCountryNumber()}</span>
-          <span className="countries-info">{Country}</span>
-          <span className="countries-info">{TotalConfirmed}</span>
+          <div className="countries-number">{getCountryNumber()}</div>
+          <div className="container">{Country}</div>
+          <div className="container">
+            <span className="countries-list-info">{TotalConfirmed}</span>
+          </div>
         </li>
       ))}
     </ul>

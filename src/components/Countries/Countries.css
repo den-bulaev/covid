@@ -24,13 +24,15 @@
 }
 
 .countries-number {
-  justify-self: center;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
   font-size: 24px;
 }
 
 .countries-number::after {
   position: absolute;
-  margin-left: 26px;
+  margin-left: 100%;
   content: "";
   height: 80px;
   width: 1px;
@@ -39,31 +41,39 @@
 
 .countries-list-item:nth-child(n+2) .countries-number::after {
   position: absolute;
-  margin-left: 32px;
+  margin-left: 100%;
   content: "";
   height: 80px;
   width: 1px;
   background-color: #B2B2B2;
 }
 
-.countries-info {
-  padding-left: 23px;
-  margin-right: 30px;
+.container {
+  padding: 0 23px;
 }
 
-.countries-info:nth-child(3)::before {
-  grid-area: people;
+.container:nth-child(3) {
+  padding-left: 0;
+}
+
+.container:nth-child(3)::before {
   position: absolute;
+  margin-right: 32px;
   content: "";
   height: 80px;
   width: 1px;
   background-color: white;
 }
 
-.countries-list-item:nth-child(n+2) .countries-info:nth-child(3)::before {
+.countries-list-item:nth-child(n+2) .container:nth-child(3)::before {
   position: absolute;
   content: "";
   height: 80px;
   width: 1px;
   background-color: #B2B2B2;
+}
+
+.countries-list-info {
+  margin-left: 23px;
+  margin-right: 23px;
 }
