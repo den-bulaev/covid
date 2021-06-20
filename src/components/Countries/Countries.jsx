@@ -49,7 +49,8 @@ const Countries = ({ query, setFilterVisibility, setCountryInfo }) => {
   const getCountry = (event) => {
     const countryName = event.target.innerText
       .toLowerCase()
-      .replace(/[()]/g, '');
+      .replace(/[()']/g, '')
+      .replace(/ô/, 'o');
     const from = getDate(new Date(new Date() - 86400000));
     const to = getDate(new Date());
 
