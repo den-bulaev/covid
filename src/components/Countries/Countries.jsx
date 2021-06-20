@@ -47,7 +47,7 @@ const Countries = ({ query, setFilterVisibility, setCountryInfo }) => {
   };
 
   const getCountry = (event) => {
-    const countryName = event.target.outerText
+    const countryName = event.target.innerText
       .toLowerCase()
       .replace(/[()]/g, '');
     const from = getDate(new Date(new Date() - 86400000));
@@ -61,7 +61,9 @@ const Countries = ({ query, setFilterVisibility, setCountryInfo }) => {
     const customAlert = document.querySelector('.alert');
 
     setFilterVisibility(true);
-    customAlert.classList.add('visible');
+
+    setTimeout(() => customAlert.classList.add('visible'), 300);
+
     getCountry(event);
   };
 
@@ -69,8 +71,8 @@ const Countries = ({ query, setFilterVisibility, setCountryInfo }) => {
     <ul className="countries-list">
       <li className="countries-list-item">
         <span className="countries-number">№</span>
-        <div className="container">Country</div>
-        <div className="container">
+        <div className="countries-container">Country</div>
+        <div className="countries-container">
           <span className="countries-list-info">Total Confirmed</span>
         </div>
       </li>
@@ -79,13 +81,12 @@ const Countries = ({ query, setFilterVisibility, setCountryInfo }) => {
         <li
           key={ID}
           className="countries-list-item"
-          onClick={handleClick}
         >
           <div className="countries-number">{getCountryNumber()}</div>
-          <div className="container">
-            <pre>{Country}</pre>
+          <div className="countries-container">
+            <pre onClick={handleClick} className="countries-country-name">{Country}</pre>
           </div>
-          <div className="container">
+          <div className="countries-container">
             <span className="countries-list-info">{TotalConfirmed}</span>
           </div>
         </li>
