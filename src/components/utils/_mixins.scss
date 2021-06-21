@@ -1,0 +1,30 @@
+@mixin rectangle {
+  width: 100%;
+  height: 80px;
+  line-height: 80px;
+
+  @media (max-width: 760px) {
+    height: 60px;
+    line-height: 60px;
+  }
+
+  @media (max-width: 550px) {
+    height: 40px;
+    line-height: 40px;
+  }
+}
+
+@mixin line {
+  position: absolute;
+  content: "";
+  width: 1px;
+  height: 80px;
+
+  @media (max-width: 760px) {
+    height: 60px;
+  }
+
+  @media (max-width: 550px) {
+    height: 40px;
+  }
+}

@@ -1,12 +1,12 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React, { useState } from 'react';
 
+import Alert from '../Alert/Alert';
 import Countries from '../Countries/Countries';
 import logo from '../../icons/logo.png';
-import confirmed from '../../icons/confirmed.svg';
-import deaths from '../../icons/deaths.svg';
-import recovered from '../../icons/recovered.svg';
+// import loupe from '../../icons/loupe.svg';
 
-import './App.css';
+import './App.scss';
 
 function App() {
   const [query, setQurey] = useState('');
@@ -27,12 +27,13 @@ function App() {
         <img
           src={logo}
           alt="logo"
-          className="header-logo"
+          className="header__logo"
         />
 
         <h1 className="header-text">STATISTIC</h1>
 
         <input
+          id="search"
           type="search"
           placeholder="Search..."
           className="search-field"
@@ -42,58 +43,11 @@ function App() {
       </header>
 
       <div className="alert">
-        <h2 className="alert-title">
-          {countryInfo.Country}
-        </h2>
-
-        <div className="alert-country-info">
-          <div className="alert-wrapper">
-            <div className="alert-info-with-icon">
-              <img
-                src={confirmed}
-                alt=""
-                className="alert-icon"
-              />
-              <p className="alert-text">Total Confirmed</p>
-            </div>
-
-            <p className="alert-text">{countryInfo.Confirmed}</p>
-          </div>
-
-          <div className="alert-wrapper">
-            <div className="alert-info-with-icon">
-              <img
-                src={deaths}
-                alt=""
-                className="alert-icon"
-              />
-              <p className="alert-text">Total Deaths</p>
-            </div>
-
-            <p className="alert-text">{countryInfo.Deaths}</p>
-          </div>
-
-          <div className="alert-wrapper">
-            <div className="alert-info-with-icon">
-              <img
-                src={recovered}
-                alt=""
-                className="alert-icon"
-              />
-              <p className="alert-text">Total Recovered</p>
-            </div>
-
-            <p className="alert-text">{countryInfo.Recovered}</p>
-          </div>
-        </div>
-
-        <button
-          type="button"
-          onClick={handleClick}
-          className="alert-button"
-        >
-          ok
-        </button>
+        {Object.keys(countryInfo).length === 0 ? (
+          <h2>Loading...</h2>
+        ) : (
+          <Alert handleClick={handleClick} {...countryInfo} />
+        )}
       </div>
 
       {filterVisibility && <div className="filter" />}

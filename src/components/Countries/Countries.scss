@@ -1,0 +1,99 @@
+@import "../utils/mixins";
+
+.countries-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  &__item {
+    @include rectangle;
+    display: grid;
+    grid-template-columns: 78px 1fr 560px;
+    margin-bottom: 20px;
+    transition: 0.5s;
+    border-radius: 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+
+    @media (max-width: 1360px) {
+      grid-template-columns: 78px 1fr 300px;
+    }
+
+    @media (max-width: 1000px) {
+      grid-template-columns: 78px 1fr 250px;
+    }
+
+    @media (max-width: 760px) {
+      grid-template-columns: 78px 1fr 200px;
+    }
+
+    @media (max-width: 600px) {
+      grid-template-columns: 45px 1fr 150px;
+    }
+
+    &:first-child {
+      color: white;
+      background-color: #2196F3;
+    }
+
+    &:nth-child(n+2):active {
+      background-color: #EC1C23;
+    }
+
+    &:hover {
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+    }
+  }
+
+  &__number {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+
+    &::after {
+      @include line;
+      margin-left: 100%;
+      background-color: white;
+    }
+  }
+
+  &__item:nth-child(n+2) &__number::after {
+    @include line;
+    margin-left: 100%;
+    background-color: #B2B2B2;
+  }
+
+  &__container {
+    padding: 0 23px;
+
+    @media (max-width: 600px) {
+      padding: 0 10px;
+    }
+
+    &:nth-child(3) {
+      padding-left: 0;
+    }
+
+    &:nth-child(3)::before {
+      @include line;
+      margin-right: 32px;
+      background-color: white;
+    }
+  }
+
+  &__item:nth-child(n+2) &__container:nth-child(3)::before {
+    @include line;
+    background-color: #B2B2B2;
+  }
+
+  &__info {
+    margin: 0 23px;
+
+    @media (max-width: 600px) {
+      margin: 0 10px;
+    }
+  }
+
+  &__country-name {
+    cursor: pointer;
+  }
+}

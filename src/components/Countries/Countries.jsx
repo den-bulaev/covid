@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import request from '../../Api/api';
 
-import './Countries.css';
+import './Countries.scss';
 
 const Countries = ({ query, setFilterVisibility, setCountryInfo }) => {
   const [countries, setCountries] = useState([]);
@@ -70,25 +70,25 @@ const Countries = ({ query, setFilterVisibility, setCountryInfo }) => {
 
   return (
     <ul className="countries-list">
-      <li className="countries-list-item">
-        <span className="countries-number">№</span>
-        <div className="countries-container">Country</div>
-        <div className="countries-container">
-          <span className="countries-list-info">Total Confirmed</span>
+      <li className="countries-list__item">
+        <span className="countries-list__number">№</span>
+        <div className="countries-list__container">Country</div>
+        <div className="countries-list__container">
+          <span className="countries-list__info">Total&nbsp;Confirmed</span>
         </div>
       </li>
 
       {filteredCountries().map(({ ID, Country, TotalConfirmed }) => (
         <li
           key={ID}
-          className="countries-list-item"
+          className="countries-list__item"
         >
-          <div className="countries-number">{getCountryNumber()}</div>
-          <div className="countries-container">
-            <pre onClick={handleClick} className="countries-country-name">{Country}</pre>
+          <div className="countries-list__number">{getCountryNumber()}</div>
+          <div className="countries-list__container">
+            <pre onClick={handleClick} className="countries-list__country-name">{Country}</pre>
           </div>
-          <div className="countries-container">
-            <span className="countries-list-info">{TotalConfirmed}</span>
+          <div className="countries-list__container">
+            <span className="countries-list__info">{TotalConfirmed}</span>
           </div>
         </li>
       ))}

@@ -1,0 +1,113 @@
+@import "../utils/mixins";
+
+.header {
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 550px) {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__logo {
+    @media (max-width: 760px) {
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+  &__text {
+    font-size: 72px;
+    line-height: 84.38px;
+
+    @media (max-width: 1000px) {
+      font-size: 50px;
+      line-height: 50px;
+    }
+
+    @media (max-width: 760px) {
+      font-size: 40px;
+      line-height: 40px;
+    }
+  }
+}
+
+.search-field {
+  @include rectangle;
+  margin-left: auto;
+  padding: 0 32px;
+  max-width: 600px;
+  transition: 0.5s;
+  font-size: 30px;
+  font-weight: 400;
+  background-image: url('../../icons/loupe.svg');
+  background-repeat: no-repeat;
+  background-position: 95%;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+
+  @media (max-width: 1360px) {
+    max-width: 400px;
+  }
+
+  @media (max-width: 1000px) {
+    max-width: 250px;
+    font-size: 30px;
+    background-size: 25px;
+  }
+
+  @media (max-width: 620px) {
+    max-width: 200px;
+    font-size: 20px;
+  }
+
+  @media (max-width: 550px) {
+    padding: 0 15px;
+    margin: 0 auto 20px;
+    max-width: 250px;
+    font-size: 18px;
+    background-size: 20px;
+  }
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+  }
+
+  &:focus {
+    outline: none;
+    border: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+  }
+
+  &::placeholder {
+    font-size: 48px;
+    font-weight: 400;
+
+    @media (max-width: 1000px) {
+      font-size: 30px;
+    }
+
+    @media (max-width: 550px) {
+      font-size: 20px;
+    }
+  }
+}
+
+
+
+.filter {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.visible {
+  z-index: 3;
+  opacity: 1;
+}
